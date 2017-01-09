@@ -1,4 +1,4 @@
-package com.vurtex.wakeup.Activity;
+package com.vurtex.wakeup.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity  implements Colors {
         progressBar = (ProgressBar) findViewById(R.id.progress);
         Wave doubleBounce = new Wave();
         doubleBounce.setBounds(0, 0, 100, 100);
-        doubleBounce.setColor(colors[1]);
+        doubleBounce.setColor(colors[8]);
         progressBar.setIndeterminateDrawable(doubleBounce);
 
         Button mEmailSignInButton = (Button) findViewById(R.id.btn_login);
@@ -78,7 +78,23 @@ public class LoginActivity extends AppCompatActivity  implements Colors {
             public void onClick(View view) {
                 //去登录
                 progressBar.setVisibility(View.VISIBLE);
-                LoginPostAsynHttp(mUsernameView.getText().toString(),mPasswordView.getText().toString());
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(2300);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        });
+                    }
+                }).start();
+                startActivity(new Intent(LoginActivity.this,MainActivity.class));
             }
         });
 

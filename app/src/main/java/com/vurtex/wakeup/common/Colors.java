@@ -13,5 +13,6 @@ public interface Colors {
             android.graphics.Color.parseColor("#FFCC5C"),
             android.graphics.Color.parseColor("#D55400"),
             android.graphics.Color.parseColor("#1AAF5D"),
+            android.graphics.Color.parseColor("#8b90af"),
     };
 }

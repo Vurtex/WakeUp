@@ -14,4 +14,7 @@
         completions."
     </string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="session">会话</string>
+    <string name="address_book">通讯录</string>
+    <string name="setting">设置</string>
 </resources>

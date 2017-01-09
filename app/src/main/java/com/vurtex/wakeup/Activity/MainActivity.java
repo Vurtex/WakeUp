@@ -11,14 +11,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.vurtex.wakeup.Activity;
+package com.vurtex.wakeup.activity;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,14 +23,13 @@ import android.os.PowerManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.LocalBroadcastManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.vurtex.wakeup.R;
+import com.vurtex.wakeup.fragment.Item1Fragment;
 
 @SuppressLint("NewApi")
 public class MainActivity extends FragmentActivity {
@@ -49,23 +45,12 @@ public class MainActivity extends FragmentActivity {
 	private Fragment[] fragments;
 	private int index;
 	private int currentTabIndex;
-	// user logged into another device
-	public boolean isConflict = false;
-	// user account was removed
-	private boolean isCurrentAccountRemoved = false;
-	
 
-	/**
-	 * check if current user account was remove
-	 */
-	public boolean getCurrentAccountRemoved() {
-		return isCurrentAccountRemoved;
-	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 		    String packageName = getPackageName();
 		    PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
@@ -76,7 +61,7 @@ public class MainActivity extends FragmentActivity {
 		        startActivity(intent);
 		    }
 		}
-		
+
 		//make sure activity will not in background if user is logged into another device or removed
 
 		setContentView(R.layout.activity_main);
@@ -84,9 +69,9 @@ public class MainActivity extends FragmentActivity {
 		initView();
 
 
-		conversationListFragment = new Fragment();
-		contactListFragment = new Fragment();
-		Fragment settingFragment = new Fragment();
+		conversationListFragment = new Item1Fragment();
+		contactListFragment = new Item1Fragment();
+		Fragment settingFragment = new Item1Fragment();
 		fragments = new Fragment[] { conversationListFragment, contactListFragment, settingFragment};
 
 		getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, conversationListFragment)
@@ -114,7 +99,7 @@ public class MainActivity extends FragmentActivity {
 
 	/**
 	 * on tab clicked
-	 * 
+	 *
 	 * @param view
 	 */
 	public void onTabClicked(View view) {
@@ -149,8 +134,8 @@ public class MainActivity extends FragmentActivity {
 
 	@Override
 	protected void onDestroy() {
-		super.onDestroy();		
-		
+		super.onDestroy();
+
 		if (exceptionBuilder != null) {
 		    exceptionBuilder.create().dismiss();
 		    exceptionBuilder = null;
@@ -177,7 +162,7 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	/**
-	 * update the total unread count 
+	 * update the total unread count
 	 */
 	public void updateUnreadAddressLable() {
 		runOnUiThread(new Runnable() {
@@ -218,7 +203,7 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		
+
 	}
 
 
