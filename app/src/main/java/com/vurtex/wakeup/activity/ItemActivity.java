@@ -14,8 +14,9 @@ import android.widget.ListView;
 
 import com.tuesda.walker.circlerefresh.CircleRefreshLayout;
 import com.vurtex.wakeup.R;
+import com.vurtex.wakeup.base.BaseActivity;
 
-public class ItemActivity extends AppCompatActivity {
+public class ItemActivity extends BaseActivity {
     private CircleRefreshLayout mRefreshLayout;
     private ListView mList;
     private Button mStop;

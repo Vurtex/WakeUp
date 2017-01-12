@@ -36,10 +36,11 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.nineoldandroids:library:2.4.0'
-    compile 'com.squareup.picasso:picasso:2.5.0'
     compile files('libs/android-query-full.0.26.7.jar')
     compile files('libs/gson-2.4.jar')
+
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.squareup.picasso:picasso:2.5.0'
     compile 'com.github.ybq:Android-SpinKit:1.1.0'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.squareup.okio:okio:1.7.0'
@@ -48,7 +49,6 @@ dependencies {
     compile 'com.android.support:support-v4:25.1.0'
     compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'com.github.traex.calendarlistview:library:1.2.3'
-
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.github.BosCattle.JMessage:PowerSupportUI:V0.0.8'
     testCompile 'junit:junit:4.12'

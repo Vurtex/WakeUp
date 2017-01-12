@@ -5,15 +5,16 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
+import com.vurtex.wakeup.base.BaseActivity;
+
 import net.grandcentrix.tray.AppPreferences;
 import net.grandcentrix.tray.core.ItemNotFoundException;
 
 import static xiaofei.library.hermes.Hermes.getContext;
 
-public class LauncherActivity extends AppCompatActivity {
+public class LauncherActivity extends BaseActivity {
 
     private static final int SPLASH_DISPLAY_LENGTH = 3000;
-    private AppPreferences appPreferences = new AppPreferences(getContext());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +30,9 @@ public class LauncherActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 try {
                     if (appPreferences.getBoolean("enter")) {
-                        String username = appPreferences.getString("userJid");
+                        String username = appPreferences.getString("username");
                         String password = appPreferences.getString("password");
                         if (username != null && password != null) {
                             MainActivity.startMain(LauncherActivity.this);

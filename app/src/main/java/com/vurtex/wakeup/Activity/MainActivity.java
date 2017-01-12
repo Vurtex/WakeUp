@@ -33,10 +33,12 @@ import android.widget.TextView;
 import com.flowingdrawer_core.ElasticDrawer;
 import com.flowingdrawer_core.FlowingDrawer;
 import com.vurtex.wakeup.R;
+import com.vurtex.wakeup.base.BaseActivity;
 import com.vurtex.wakeup.fragment.Item1Fragment;
+import com.vurtex.wakeup.fragment.MineFragment;
 
 @SuppressLint("NewApi")
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
 	protected static final String TAG = "MainActivity";
 	// textview for unread message count
@@ -76,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
 		conversationListFragment = new Item1Fragment();
 		contactListFragment = new Item1Fragment();
-		Item1Fragment settingFragment = new Item1Fragment();
+		MineFragment settingFragment = new MineFragment();
 		fragments = new Fragment[] { conversationListFragment, contactListFragment, settingFragment};
 
 		getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, conversationListFragment)

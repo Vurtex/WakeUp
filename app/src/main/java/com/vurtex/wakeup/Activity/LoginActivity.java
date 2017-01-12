@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.androidquery.AQuery;
 import com.github.ybq.android.spinkit.style.Wave;
 import com.vurtex.wakeup.R;
+import com.vurtex.wakeup.base.BaseActivity;
 import com.vurtex.wakeup.common.Colors;
 import com.vurtex.wakeup.common.Constants;
 
@@ -42,12 +43,11 @@ import work.wanghao.simplehud.SimpleHUD;
  * @date 2017-1-7
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity  implements Colors,LoginCallBack {
+public class LoginActivity extends BaseActivity implements Colors,LoginCallBack {
 
     // UI references.
     private AutoCompleteTextView mUsernameView;
     private EditText mPasswordView;
-    private AQuery aq;
     private Context context;
     private ProgressBar progressBar;
     private SimpleLogin mSimpleLogin;
@@ -56,7 +56,6 @@ public class LoginActivity extends AppCompatActivity  implements Colors,LoginCal
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         context=this;
-        aq = new AQuery(context);
 //        spinKitView = (SpinKitView)findViewById(R.id.spin_kit);
         mSimpleLogin=new SimpleLogin();
         // Set up the login form.
@@ -100,6 +99,12 @@ public class LoginActivity extends AppCompatActivity  implements Colors,LoginCal
             }
         });
 
+    }
+
+    public static void startLogin(Activity activity) {
+        Intent intent = new Intent(activity, LoginActivity.class);
+        activity.startActivity(intent);
+        activity.finish();
     }
 
     OkHttpClient mOkHttpClient = new OkHttpClient();
@@ -152,18 +157,15 @@ public class LoginActivity extends AppCompatActivity  implements Colors,LoginCal
 
         });
     }
-
     @Override
     public void connectSuccess() {
         progressBar.setVisibility(View.GONE);
         Toast.makeText(getApplicationContext(), "请求成功", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(LoginActivity.this,MainActivity.class));
+        appPreferences.put("enter",true);
+        appPreferences.put("username",mUsernameView.getText().toString());
+        appPreferences.put("password",mPasswordView.getText().toString());
 
-    }
-    public static void startLogin(Activity activity) {
-        Intent intent = new Intent(activity, LoginActivity.class);
-        activity.startActivity(intent);
-        activity.finish();
     }
     @Override
     public void connectionFailed(String s) {

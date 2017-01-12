@@ -7,8 +7,9 @@ import android.util.Log;
 import com.andexert.calendarlistview.library.DayPickerView;
 import com.andexert.calendarlistview.library.SimpleMonthAdapter;
 import com.vurtex.wakeup.R;
+import com.vurtex.wakeup.base.BaseActivity;
 
-public class GetDateActivity extends AppCompatActivity implements com.andexert.calendarlistview.library.DatePickerController {
+public class GetDateActivity extends BaseActivity implements com.andexert.calendarlistview.library.DatePickerController {
 
     private DayPickerView dayPickerView;
 

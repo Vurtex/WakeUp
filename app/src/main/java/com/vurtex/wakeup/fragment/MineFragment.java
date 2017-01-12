@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.vurtex.wakeup.R;
 import com.vurtex.wakeup.activity.LoginActivity;
+import com.vurtex.wakeup.base.BaseFragment;
 
 import tech.jiangtao.support.kit.callback.DisconnectCallBack;
 import tech.jiangtao.support.ui.service.XMPPService;
@@ -17,8 +18,9 @@ import tech.jiangtao.support.ui.service.XMPPService;
 /**
  * @author Vurtex
  */
-public class MineFragment extends Fragment {
+public class MineFragment extends BaseFragment {
     private Button mStop;
+
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -36,7 +38,7 @@ public class MineFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_item1_list, container,false);
+        View view = inflater.inflate(R.layout.fragment_item1_list, container, false);
         mStop = (Button) view.findViewById(R.id.stop_refresh);
 
         String[] strs = {
@@ -63,6 +65,9 @@ public class MineFragment extends Fragment {
                 XMPPService.disConnect(new DisconnectCallBack() {
                     @Override
                     public void disconnectFinish() {
+                        appPreferences.put("enter", false);
+                        appPreferences.put("username", null);
+                        appPreferences.put("password", null);
                         LoginActivity.startLogin(getActivity());
                     }
                 });
@@ -72,6 +77,7 @@ public class MineFragment extends Fragment {
 
         return view;
     }
+
     public static boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub
         if (keyCode == event.KEYCODE_BACK) {
