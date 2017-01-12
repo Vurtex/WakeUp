@@ -1,34 +1,29 @@
 package com.vurtex.wakeup.fragment;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 
-import com.tuesda.walker.circlerefresh.CircleRefreshLayout;
 import com.vurtex.wakeup.R;
-import com.vurtex.wakeup.activity.ItemActivity;
+import com.vurtex.wakeup.activity.LoginActivity;
+
+import tech.jiangtao.support.kit.callback.DisconnectCallBack;
+import tech.jiangtao.support.ui.service.XMPPService;
 
 /**
  * @author Vurtex
  */
-public class Item1Fragment extends Fragment {
-    private CircleRefreshLayout mRefreshLayout;
-    private ListView mList;
+public class MineFragment extends Fragment {
     private Button mStop;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public Item1Fragment() {
+    public MineFragment() {
     }
 
     @Override
@@ -42,8 +37,6 @@ public class Item1Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item1_list, container,false);
-        mRefreshLayout = (CircleRefreshLayout) view.findViewById(R.id.refresh_layout);
-        mList = (ListView) view.findViewById(R.id.list);
         mStop = (Button) view.findViewById(R.id.stop_refresh);
 
         String[] strs = {
@@ -64,33 +57,18 @@ public class Item1Fragment extends Fragment {
                 "components",
                 "Bitmap",
         };
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, strs);
-        mList.setAdapter(adapter);
-        mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(getActivity(),ItemActivity.class));
-            }
-        });
         mStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mRefreshLayout.finishRefreshing();
+                XMPPService.disConnect(new DisconnectCallBack() {
+                    @Override
+                    public void disconnectFinish() {
+                        LoginActivity.startLogin(getActivity());
+                    }
+                });
             }
         });
 
-        mRefreshLayout.setOnRefreshListener(
-                new CircleRefreshLayout.OnCircleRefreshListener() {
-                    @Override
-                    public void refreshing() {
-                        // do something when refresh starts
-                    }
-
-                    @Override
-                    public void completeRefresh() {
-                        // do something when refresh complete
-                    }
-                });
 
         return view;
     }

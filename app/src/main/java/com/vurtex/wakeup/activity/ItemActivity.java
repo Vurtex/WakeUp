@@ -1,13 +1,12 @@
-package com.vurtex.wakeup.fragment;
+package com.vurtex.wakeup.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,36 +14,20 @@ import android.widget.ListView;
 
 import com.tuesda.walker.circlerefresh.CircleRefreshLayout;
 import com.vurtex.wakeup.R;
-import com.vurtex.wakeup.activity.ItemActivity;
 
-/**
- * @author Vurtex
- */
-public class Item1Fragment extends Fragment {
+public class ItemActivity extends AppCompatActivity {
     private CircleRefreshLayout mRefreshLayout;
     private ListView mList;
     private Button mStop;
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
-    public Item1Fragment() {
-    }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_item);
 
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_item1_list, container,false);
-        mRefreshLayout = (CircleRefreshLayout) view.findViewById(R.id.refresh_layout);
-        mList = (ListView) view.findViewById(R.id.list);
-        mStop = (Button) view.findViewById(R.id.stop_refresh);
+        mRefreshLayout = (CircleRefreshLayout) findViewById(R.id.refresh_layout);
+        mList = (ListView) findViewById(R.id.list);
+        mStop = (Button) findViewById(R.id.stop_refresh);
 
         String[] strs = {
                 "The",
@@ -54,7 +37,7 @@ public class Item1Fragment extends Fragment {
                 "the",
                 "draw",
                 "calls",
-                ".",
+                "work",
                 "To",
                 "draw",
                 "something,",
@@ -64,12 +47,12 @@ public class Item1Fragment extends Fragment {
                 "components",
                 "Bitmap",
         };
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, strs);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, strs);
         mList.setAdapter(adapter);
         mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(getActivity(),ItemActivity.class));
+                startActivity(new Intent(getBaseContext(),GetDateActivity.class));
             }
         });
         mStop.setOnClickListener(new View.OnClickListener() {
@@ -92,14 +75,9 @@ public class Item1Fragment extends Fragment {
                     }
                 });
 
-        return view;
-    }
-    public static boolean onKeyDown(int keyCode, KeyEvent event) {
-        // TODO Auto-generated method stub
-        if (keyCode == event.KEYCODE_BACK) {
-//            mRefreshLayout.finishRefreshing();
-        }
-        return true;
+
+
+
     }
 
 }

@@ -1,5 +1,6 @@
 package com.vurtex.wakeup.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,13 +32,17 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import tech.jiangtao.support.kit.callback.LoginCallBack;
+import tech.jiangtao.support.kit.eventbus.LoginParam;
+import tech.jiangtao.support.kit.userdata.SimpleLogin;
+import work.wanghao.simplehud.SimpleHUD;
 
 /**
  * @author Vurtex
  * @date 2017-1-7
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity  implements Colors {
+public class LoginActivity extends AppCompatActivity  implements Colors,LoginCallBack {
 
     // UI references.
     private AutoCompleteTextView mUsernameView;
@@ -45,6 +50,7 @@ public class LoginActivity extends AppCompatActivity  implements Colors {
     private AQuery aq;
     private Context context;
     private ProgressBar progressBar;
+    private SimpleLogin mSimpleLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +58,7 @@ public class LoginActivity extends AppCompatActivity  implements Colors {
         context=this;
         aq = new AQuery(context);
 //        spinKitView = (SpinKitView)findViewById(R.id.spin_kit);
+        mSimpleLogin=new SimpleLogin();
         // Set up the login form.
         mUsernameView = (AutoCompleteTextView) findViewById(R.id.et_username);
 
@@ -78,23 +85,18 @@ public class LoginActivity extends AppCompatActivity  implements Colors {
             public void onClick(View view) {
                 //去登录
                 progressBar.setVisibility(View.VISIBLE);
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep(2300);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                progressBar.setVisibility(View.GONE);
-                            }
-                        });
-                    }
-                }).start();
-                startActivity(new Intent(LoginActivity.this,MainActivity.class));
+
+                if (mUsernameView.getText() == null || mUsernameView.getText().toString().equals("")) {
+                    SimpleHUD.showErrorMessage(LoginActivity.this, "用户名不能为空。");
+                    return;
+                }
+                if (mPasswordView.getText() == null || mPasswordView.getText().toString().equals("")) {
+                    SimpleHUD.showErrorMessage(LoginActivity.this, "密码不能为空。");
+                    return;
+                }
+                mSimpleLogin.startLogin(new LoginParam(mUsernameView.getText().toString(),
+                        mPasswordView.getText().toString()), LoginActivity.this);
+//                startActivity(new Intent(LoginActivity.this,MainActivity.class));
             }
         });
 
@@ -149,6 +151,23 @@ public class LoginActivity extends AppCompatActivity  implements Colors {
             }
 
         });
+    }
+
+    @Override
+    public void connectSuccess() {
+        progressBar.setVisibility(View.GONE);
+        Toast.makeText(getApplicationContext(), "请求成功", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(LoginActivity.this,MainActivity.class));
+
+    }
+    public static void startLogin(Activity activity) {
+        Intent intent = new Intent(activity, LoginActivity.class);
+        activity.startActivity(intent);
+        activity.finish();
+    }
+    @Override
+    public void connectionFailed(String s) {
+        Toast.makeText(getApplicationContext(), "请求失败："+s, Toast.LENGTH_SHORT).show();
     }
 }
 

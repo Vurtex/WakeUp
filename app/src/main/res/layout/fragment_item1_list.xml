@@ -3,24 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.tuesda.walker.circlerefresh.CircleRefreshLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/refresh_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:AniBackColor="#ff8b90af"
-        app:AniForeColor="#ffffffff"
-        app:CircleSmaller="6">
-
-        <ListView
-            android:background="#ffffffff"
-            android:id="@+id/list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></ListView>
-
-    </com.tuesda.walker.circlerefresh.CircleRefreshLayout>
     <Button
-        android:id="@+id/stop_refresh"
-        android:text="Stop Refreshing"
+        android:id="@+id/btn_logout"
+        android:text="@string/logout_text"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"

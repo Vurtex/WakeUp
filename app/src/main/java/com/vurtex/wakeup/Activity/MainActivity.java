@@ -14,6 +14,7 @@
 package com.vurtex.wakeup.activity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -21,18 +22,21 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.flowingdrawer_core.ElasticDrawer;
+import com.flowingdrawer_core.FlowingDrawer;
 import com.vurtex.wakeup.R;
 import com.vurtex.wakeup.fragment.Item1Fragment;
 
 @SuppressLint("NewApi")
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends AppCompatActivity {
 
 	protected static final String TAG = "MainActivity";
 	// textview for unread message count
@@ -41,11 +45,12 @@ public class MainActivity extends FragmentActivity {
 	private TextView unreadAddressLable;
 
 	private Button[] mTabs;
-	private Fragment contactListFragment;
+	private Item1Fragment contactListFragment;
 	private Fragment[] fragments;
 	private int index;
 	private int currentTabIndex;
 
+	private FlowingDrawer mDrawer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +76,7 @@ public class MainActivity extends FragmentActivity {
 
 		conversationListFragment = new Item1Fragment();
 		contactListFragment = new Item1Fragment();
-		Fragment settingFragment = new Item1Fragment();
+		Item1Fragment settingFragment = new Item1Fragment();
 		fragments = new Fragment[] { conversationListFragment, contactListFragment, settingFragment};
 
 		getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, conversationListFragment)
@@ -82,11 +87,18 @@ public class MainActivity extends FragmentActivity {
 
 	}
 
+	/**
+	 * TODO 检测版本并更新
+	 */
+	public void updateCheck() {}
 
 	/**
 	 * init views
 	 */
 	private void initView() {
+		mDrawer = (FlowingDrawer) findViewById(R.id.drawerlayout);
+		mDrawer = (FlowingDrawer) findViewById(R.id.drawerlayout);
+		mDrawer.setTouchMode(ElasticDrawer.TOUCH_MODE_BEZEL);
 		unreadLabel = (TextView) findViewById(R.id.unread_msg_number);
 		unreadAddressLable = (TextView) findViewById(R.id.unread_address_number);
 		mTabs = new Button[3];
@@ -95,8 +107,21 @@ public class MainActivity extends FragmentActivity {
 		mTabs[2] = (Button) findViewById(R.id.btn_setting);
 		// select first tab
 		mTabs[0].setSelected(true);
+		setupToolbar();
 	}
 
+	protected void setupToolbar() {
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		setSupportActionBar(toolbar);
+		toolbar.setNavigationIcon(R.drawable.ic_menu_white);
+
+		toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				mDrawer.toggleMenu();
+			}
+		});
+	}
 	/**
 	 * on tab clicked
 	 *
@@ -128,9 +153,10 @@ public class MainActivity extends FragmentActivity {
 		currentTabIndex = index;
 	}
 
-
-
-
+	public static void startMain(Activity activity) {
+		Intent intent = new Intent(activity, MainActivity.class);
+		activity.startActivity(intent);
+	}
 
 	@Override
 	protected void onDestroy() {
@@ -211,13 +237,14 @@ public class MainActivity extends FragmentActivity {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			moveTaskToBack(false);
+			conversationListFragment.onKeyDown(keyCode,event);
 			return true;
 		}
 		return super.onKeyDown(keyCode, event);
 	}
 
 	private android.app.AlertDialog.Builder exceptionBuilder;
-    private Fragment conversationListFragment;
+    private Item1Fragment conversationListFragment;
 
 
 	@Override

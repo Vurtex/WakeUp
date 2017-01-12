@@ -16,5 +16,8 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="session">会话</string>
     <string name="address_book">通讯录</string>
+    <string name="logout_text">注销</string>
     <string name="setting">设置</string>
+    <string name="title_activity_item">ItemActivity</string>
+    <string name="title_activity_get_date">GetDateActivity</string>
 </resources>
