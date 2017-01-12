@@ -10,17 +10,21 @@ import android.widget.Button;
 
 import com.vurtex.wakeup.R;
 import com.vurtex.wakeup.activity.LoginActivity;
-import com.vurtex.wakeup.base.BaseFragment;
+
+import net.grandcentrix.tray.AppPreferences;
 
 import tech.jiangtao.support.kit.callback.DisconnectCallBack;
 import tech.jiangtao.support.ui.service.XMPPService;
 
+import static xiaofei.library.hermes.Hermes.getContext;
+
 /**
  * @author Vurtex
  */
-public class MineFragment extends BaseFragment {
+public class MineFragment extends Fragment {
     private Button mStop;
 
+    public AppPreferences appPreferences ;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -38,27 +42,10 @@ public class MineFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_item1_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_mine, container, false);
+        appPreferences = new AppPreferences(getActivity());
         mStop = (Button) view.findViewById(R.id.stop_refresh);
 
-        String[] strs = {
-                "The",
-                "Canvas",
-                "class",
-                "holds",
-                "the",
-                "draw",
-                "calls",
-                ".",
-                "To",
-                "draw",
-                "something,",
-                "you",
-                "need",
-                "4 basic",
-                "components",
-                "Bitmap",
-        };
         mStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
