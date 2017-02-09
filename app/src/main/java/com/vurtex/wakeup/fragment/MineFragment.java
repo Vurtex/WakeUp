@@ -44,7 +44,7 @@ public class MineFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mine, container, false);
         appPreferences = new AppPreferences(getActivity());
-        mStop = (Button) view.findViewById(R.id.stop_refresh);
+        mStop = (Button) view.findViewById(R.id.btn_logout);
 
         mStop.setOnClickListener(new View.OnClickListener() {
             @Override

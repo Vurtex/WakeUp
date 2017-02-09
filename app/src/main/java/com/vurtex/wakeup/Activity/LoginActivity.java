@@ -83,19 +83,19 @@ public class LoginActivity extends BaseActivity implements Colors,LoginCallBack 
             @Override
             public void onClick(View view) {
                 //去登录
-                progressBar.setVisibility(View.VISIBLE);
-
-                if (mUsernameView.getText() == null || mUsernameView.getText().toString().equals("")) {
-                    SimpleHUD.showErrorMessage(LoginActivity.this, "用户名不能为空。");
-                    return;
-                }
-                if (mPasswordView.getText() == null || mPasswordView.getText().toString().equals("")) {
-                    SimpleHUD.showErrorMessage(LoginActivity.this, "密码不能为空。");
-                    return;
-                }
-                mSimpleLogin.startLogin(new LoginParam(mUsernameView.getText().toString(),
-                        mPasswordView.getText().toString()), LoginActivity.this);
-//                startActivity(new Intent(LoginActivity.this,MainActivity.class));
+//                progressBar.setVisibility(View.VISIBLE);
+//
+//                if (mUsernameView.getText() == null || mUsernameView.getText().toString().equals("")) {
+//                    SimpleHUD.showErrorMessage(LoginActivity.this, "用户名不能为空。");
+//                    return;
+//                }
+//                if (mPasswordView.getText() == null || mPasswordView.getText().toString().equals("")) {
+//                    SimpleHUD.showErrorMessage(LoginActivity.this, "密码不能为空。");
+//                    return;
+//                }
+//                mSimpleLogin.startLogin(new LoginParam(mUsernameView.getText().toString(),
+//                        mPasswordView.getText().toString()), LoginActivity.this);
+                startActivity(new Intent(LoginActivity.this,MainActivity.class));
             }
         });
 

@@ -22,6 +22,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -35,6 +36,7 @@ import com.flowingdrawer_core.FlowingDrawer;
 import com.vurtex.wakeup.R;
 import com.vurtex.wakeup.base.BaseActivity;
 import com.vurtex.wakeup.fragment.Item1Fragment;
+import com.vurtex.wakeup.fragment.MenuListFragment;
 import com.vurtex.wakeup.fragment.MineFragment;
 
 @SuppressLint("NewApi")
@@ -99,7 +101,6 @@ public class MainActivity extends BaseActivity {
 	 */
 	private void initView() {
 		mDrawer = (FlowingDrawer) findViewById(R.id.drawerlayout);
-		mDrawer = (FlowingDrawer) findViewById(R.id.drawerlayout);
 		mDrawer.setTouchMode(ElasticDrawer.TOUCH_MODE_BEZEL);
 		unreadLabel = (TextView) findViewById(R.id.unread_msg_number);
 		unreadAddressLable = (TextView) findViewById(R.id.unread_address_number);
@@ -110,6 +111,7 @@ public class MainActivity extends BaseActivity {
 		// select first tab
 		mTabs[0].setSelected(true);
 		setupToolbar();
+		setupMenu();
 	}
 
 	protected void setupToolbar() {
@@ -124,11 +126,34 @@ public class MainActivity extends BaseActivity {
 			}
 		});
 	}
-	/**
-	 * on tab clicked
-	 *
-	 * @param view
-	 */
+	private void setupMenu() {
+		FragmentManager fm = getSupportFragmentManager();
+		MenuListFragment mMenuFragment = (MenuListFragment) fm.findFragmentById(R.id.id_container_menu);
+		if (mMenuFragment == null) {
+			mMenuFragment = new MenuListFragment();
+			fm.beginTransaction().add(R.id.id_container_menu, mMenuFragment).commit();
+		}
+
+//        mDrawer.setOnDrawerStateChangeListener(new ElasticDrawer.OnDrawerStateChangeListener() {
+//            @Override
+//            public void onDrawerStateChange(int oldState, int newState) {
+//                if (newState == ElasticDrawer.STATE_CLOSED) {
+//                    Log.i("MainActivity", "Drawer STATE_CLOSED");
+//                }
+//            }
+//
+//            @Override
+//            public void onDrawerSlide(float openRatio, int offsetPixels) {
+//                Log.i("MainActivity", "openRatio=" + openRatio + " ,offsetPixels=" + offsetPixels);
+//            }
+//        });
+	}
+
+		/**
+         * on tab clicked
+         *
+         * @param view
+         */
 	public void onTabClicked(View view) {
 		switch (view.getId()) {
 		case R.id.btn_conversation:

@@ -21,7 +21,7 @@ import com.vurtex.wakeup.activity.ItemActivity;
  * @author Vurtex
  */
 public class Item1Fragment extends Fragment {
-    private CircleRefreshLayout mRefreshLayout;
+    public static CircleRefreshLayout mRefreshLayout;
     private ListView mList;
     private Button mStop;
     /**
@@ -97,7 +97,7 @@ public class Item1Fragment extends Fragment {
     public static boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub
         if (keyCode == event.KEYCODE_BACK) {
-//            mRefreshLayout.finishRefreshing();
+            mRefreshLayout.finishRefreshing();
         }
         return true;
     }
