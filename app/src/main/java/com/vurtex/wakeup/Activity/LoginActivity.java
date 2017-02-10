@@ -1,175 +1,184 @@
+/**
+ * Copyright (C) 2016 Hyphenate Inc. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.vurtex.wakeup.activity;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.androidquery.AQuery;
-import com.github.ybq.android.spinkit.style.Wave;
+import com.hyphenate.EMCallBack;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.easeui.utils.EaseCommonUtils;
+import com.vurtex.wakeup.DemoHelper;
 import com.vurtex.wakeup.R;
-import com.vurtex.wakeup.base.BaseActivity;
-import com.vurtex.wakeup.common.Colors;
-import com.vurtex.wakeup.common.Constants;
+import com.vurtex.wakeup.common.MyApplication;
+import com.vurtex.wakeup.db.DemoDBManager;
+import com.vurtex.wakeup.ui.BaseActivity;
+import com.vurtex.wakeup.ui.RegisterActivity;
 
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-import tech.jiangtao.support.kit.callback.LoginCallBack;
-import tech.jiangtao.support.kit.eventbus.LoginParam;
-import tech.jiangtao.support.kit.userdata.SimpleLogin;
-import work.wanghao.simplehud.SimpleHUD;
+import info.wangchen.simplehud.SimpleHUD;
 
 /**
- * @author Vurtex
- * @date 2017-1-7
- * A login screen that offers login via email/password.
+ * Login screen
+ *
  */
-public class LoginActivity extends BaseActivity implements Colors,LoginCallBack {
+public class LoginActivity extends BaseActivity {
+    private static final String TAG = "LoginActivity";
+    public static final int REQUEST_CODE_SETNICK = 1;
+    private EditText usernameEditText;
+    private EditText passwordEditText;
 
-    // UI references.
-    private AutoCompleteTextView mUsernameView;
-    private EditText mPasswordView;
-    private Context context;
-    private ProgressBar progressBar;
-    private SimpleLogin mSimpleLogin;
+    private boolean autoLogin = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        context=this;
-//        spinKitView = (SpinKitView)findViewById(R.id.spin_kit);
-        mSimpleLogin=new SimpleLogin();
-        // Set up the login form.
-        mUsernameView = (AutoCompleteTextView) findViewById(R.id.et_username);
 
-        mPasswordView = (EditText) findViewById(R.id.et_password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        // enter the main activity if already logged in
+        if (DemoHelper.getInstance().isLoggedIn()) {
+            autoLogin = true;
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+            return;
+        }
+        setContentView(R.layout.em_activity_login);
+
+        usernameEditText = (EditText) findViewById(R.id.username);
+        passwordEditText = (EditText) findViewById(R.id.password);
+
+        // if user changed, clear the password
+        usernameEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    //自动登录
-                    return true;
-                }
-                return false;
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                passwordEditText.setText(null);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
-        progressBar = (ProgressBar) findViewById(R.id.progress);
-        Wave doubleBounce = new Wave();
-        doubleBounce.setBounds(0, 0, 100, 100);
-        doubleBounce.setColor(colors[8]);
-        progressBar.setIndeterminateDrawable(doubleBounce);
-
-        Button mEmailSignInButton = (Button) findViewById(R.id.btn_login);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //去登录
-//                progressBar.setVisibility(View.VISIBLE);
-//
-//                if (mUsernameView.getText() == null || mUsernameView.getText().toString().equals("")) {
-//                    SimpleHUD.showErrorMessage(LoginActivity.this, "用户名不能为空。");
-//                    return;
-//                }
-//                if (mPasswordView.getText() == null || mPasswordView.getText().toString().equals("")) {
-//                    SimpleHUD.showErrorMessage(LoginActivity.this, "密码不能为空。");
-//                    return;
-//                }
-//                mSimpleLogin.startLogin(new LoginParam(mUsernameView.getText().toString(),
-//                        mPasswordView.getText().toString()), LoginActivity.this);
-                startActivity(new Intent(LoginActivity.this,MainActivity.class));
-            }
-        });
-
+        if (DemoHelper.getInstance().getCurrentUsernName() != null) {
+            usernameEditText.setText(DemoHelper.getInstance().getCurrentUsernName());
+        }
     }
 
-    public static void startLogin(Activity activity) {
-        Intent intent = new Intent(activity, LoginActivity.class);
-        activity.startActivity(intent);
-        activity.finish();
-    }
-
-    OkHttpClient mOkHttpClient = new OkHttpClient();
-
-    /** 登录
-     * POST 请求
-     * @param Username
-     * @param Password
+    /**
+     * login
+     *
+     * @param view
      */
-    private void LoginPostAsynHttp(String Username, String Password) {
+    public void login(View view) {
+        if (!EaseCommonUtils.isNetWorkConnected(this)) {
+            Toast.makeText(this, R.string.network_isnot_available, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String currentUsername = usernameEditText.getText().toString().trim();
+        String currentPassword = passwordEditText.getText().toString().trim();
 
-        RequestBody formBody = new FormBody.Builder()
-                .add("username", Username)
-                .add("password", Password)
-                .add("versionCode", "100")
-                .add("systemType", "Android")
-                .build();
-        Request request = new Request.Builder()
-                .url(Constants.Service_url+"/lianxi/123.php")
-                .post(formBody)
-                .build();
-        Call call = mOkHttpClient.newCall(request);
-        call.enqueue(new Callback() {
+        if (TextUtils.isEmpty(currentUsername)) {
+            Toast.makeText(this, R.string.User_name_cannot_be_empty, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (TextUtils.isEmpty(currentPassword)) {
+            Toast.makeText(this, R.string.Password_cannot_be_empty, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        SimpleHUD.showLoadingMessage(this, getString(R.string.Is_landing), true);
+        // After logout，the DemoDB may still be accessed due to async callback, so the DemoDB will be re-opened again.
+        // close it before login to make sure DemoDB not overlap
+        DemoDBManager.getInstance().closeDB();
+
+        // reset current user name before login
+        DemoHelper.getInstance().setCurrentUserName(currentUsername);
+
+        final long start = System.currentTimeMillis();
+        // call login method
+        Log.d(TAG, "EMClient.getInstance().login");
+        EMClient.getInstance().login(currentUsername, currentPassword, new EMCallBack() {
+
             @Override
-            public void onFailure(Call call, IOException e) {
-                Log.i("vurtex", call.toString());
+            public void onSuccess() {
+                Log.d(TAG, "login: onSuccess");
 
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        progressBar.setVisibility(View.GONE);
-                    }
-                });
+
+                // ** manually load all local groups and conversation
+                EMClient.getInstance().groupManager().loadAllGroups();
+                EMClient.getInstance().chatManager().loadAllConversations();
+
+                // update current user's display name for APNs
+                boolean updatenick = EMClient.getInstance().pushManager().updatePushNickname(
+                        MyApplication.currentUserNick.trim());
+                if (!updatenick) {
+                    Log.e("LoginActivity", "update current user nick fail");
+                }
+                SimpleHUD.dismiss();
+                // get user's info (this should be get from App's server or 3rd party service)
+                DemoHelper.getInstance().getUserProfileManager().asyncGetCurrentUserInfo();
+
+                Intent intent = new Intent(LoginActivity.this,
+                        MainActivity.class);
+                startActivity(intent);
+
+                finish();
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String str = response.body().string();
-                Log.i("vurtex", str);
+            public void onProgress(int progress, String status) {
+                Log.d(TAG, "login: onProgress");
+            }
 
+            @Override
+            public void onError(final int code, final String message) {
+                Log.d(TAG, "login: onError: " + code);
                 runOnUiThread(new Runnable() {
-                    @Override
                     public void run() {
-                        progressBar.setVisibility(View.GONE);
-                        Toast.makeText(getApplicationContext(), "请求成功", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                        SimpleHUD.dismiss();
+                        Toast.makeText(getApplicationContext(), getString(R.string.Login_failed) + message,
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
             }
-
         });
     }
-    @Override
-    public void connectSuccess() {
-        progressBar.setVisibility(View.GONE);
-        Toast.makeText(getApplicationContext(), "请求成功", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(LoginActivity.this,MainActivity.class));
-        appPreferences.put("enter",true);
-        appPreferences.put("username",mUsernameView.getText().toString());
-        appPreferences.put("password",mPasswordView.getText().toString());
 
+
+    /**
+     * register
+     *
+     * @param view
+     */
+    public void register(View view) {
+        startActivityForResult(new Intent(this, RegisterActivity.class), 0);
     }
+
     @Override
-    public void connectionFailed(String s) {
-        Toast.makeText(getApplicationContext(), "请求失败："+s, Toast.LENGTH_SHORT).show();
+    protected void onResume() {
+        super.onResume();
+        if (autoLogin) {
+            return;
+        }
     }
 }
-

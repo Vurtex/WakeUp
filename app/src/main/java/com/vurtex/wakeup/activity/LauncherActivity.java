@@ -1,16 +1,12 @@
 package com.vurtex.wakeup.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
+import com.vurtex.wakeup.R;
 import com.vurtex.wakeup.base.BaseActivity;
-
-import net.grandcentrix.tray.AppPreferences;
-import net.grandcentrix.tray.core.ItemNotFoundException;
-
-import static xiaofei.library.hermes.Hermes.getContext;
 
 public class LauncherActivity extends BaseActivity {
 
@@ -20,6 +16,7 @@ public class LauncherActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_launcher);
         super.onCreate(savedInstanceState);
     }
 
@@ -31,20 +28,22 @@ public class LauncherActivity extends BaseActivity {
             @Override
             public void run() {
                 try {
-                    if (appPreferences.getBoolean("enter")) {
-                        String username = appPreferences.getString("username");
-                        String password = appPreferences.getString("password");
+                    if (appPreferences.getBoolean("enter",false)) {
+                        String username = appPreferences.getString("username",null);
+                        String password = appPreferences.getString("password",null);
                         if (username != null && password != null) {
                             MainActivity.startMain(LauncherActivity.this);
                         } else {
-                            LoginActivity.startLogin(LauncherActivity.this);
+                            startActivity(new Intent(LauncherActivity.this,LoginActivity.class));
                         }
                     } else {
                         IndexActivity.startIndex(getBaseContext());
                     }
-                } catch (ItemNotFoundException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                     IndexActivity.startIndex(getBaseContext());
+                }finally {
+                    finish();
                 }
             }
         }, SPLASH_DISPLAY_LENGTH);

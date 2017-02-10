@@ -1,5 +1,6 @@
 package com.vurtex.wakeup.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
@@ -11,20 +12,12 @@ import android.widget.Button;
 import com.vurtex.wakeup.R;
 import com.vurtex.wakeup.activity.LoginActivity;
 
-import net.grandcentrix.tray.AppPreferences;
-
-import tech.jiangtao.support.kit.callback.DisconnectCallBack;
-import tech.jiangtao.support.ui.service.XMPPService;
-
-import static xiaofei.library.hermes.Hermes.getContext;
-
 /**
  * @author Vurtex
  */
 public class MineFragment extends Fragment {
     private Button mStop;
 
-    public AppPreferences appPreferences ;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -43,21 +36,12 @@ public class MineFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mine, container, false);
-        appPreferences = new AppPreferences(getActivity());
         mStop = (Button) view.findViewById(R.id.btn_logout);
 
         mStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                XMPPService.disConnect(new DisconnectCallBack() {
-                    @Override
-                    public void disconnectFinish() {
-                        appPreferences.put("enter", false);
-                        appPreferences.put("username", null);
-                        appPreferences.put("password", null);
-                        LoginActivity.startLogin(getActivity());
-                    }
-                });
+                startActivity(new Intent(getActivity(),LoginActivity.class));
             }
         });
 

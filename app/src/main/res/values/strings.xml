@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">WakeUp</string>
-
     <!-- Strings related to login -->
     <string name="prompt_email">UserName or Email</string>
     <string name="prompt_password">Password (optional)</string>
@@ -14,10 +12,7 @@
         completions."
     </string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="session">会话</string>
-    <string name="address_book">通讯录</string>
     <string name="logout_text">注销</string>
-    <string name="setting">设置</string>
     <string name="title_activity_item">ItemActivity</string>
     <string name="title_activity_get_date">GetDateActivity</string>
 
@@ -25,4 +20,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="user_profile_photo">http://baobaoloveyou.com/flowingdrawer_icon.png</string>
+
+    <string name="default_string">我是做什么的</string>
 </resources>

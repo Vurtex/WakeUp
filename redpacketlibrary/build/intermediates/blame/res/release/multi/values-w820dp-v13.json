@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-w820dp-v13/values-w820dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 57,
+                    "endOffset": 108
+                },
+                "from": {
+                    "file": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/exploded-aar/WakeUp/EaseUI/unspecified/res/values-w820dp-v13/values-w820dp-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 57,
+                        "endOffset": 108
+                    }
+                }
+            }
+        ]
+    }
+]

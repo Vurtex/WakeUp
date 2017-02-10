@@ -10,6 +10,7 @@ import com.vurtex.wakeup.base.BaseActivity;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 /**
+ * 引导页 暂定4个吧
  * Created by Vurtex on 2017/1/12.
  */
 public class IndexActivity extends BaseActivity {
@@ -17,6 +18,7 @@ public class IndexActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         startActivity(new Intent(this,LoginActivity.class));
+        finish();
     }
     public static void startIndex(Context context) {
         Intent intent = new Intent(context, IndexActivity.class);
