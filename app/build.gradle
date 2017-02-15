@@ -17,6 +17,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES.txt'
         exclude 'META-INF/LICENSE.txt'
@@ -28,6 +29,11 @@ android {
         exclude 'META-INF/license.txt'
         exclude 'META-INF/dependencies.txt'
         exclude 'META-INF/LGPL2.1'
+    }
+    sourceSets{
+        main{
+            jniLibs.srcDirs = ['libs']
+        }
     }
 }
 
@@ -44,12 +50,10 @@ dependencies {
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.support:support-v4:25.1.0'
     compile 'com.android.support:recyclerview-v7:25.1.0'
-    compile 'com.github.traex.calendarlistview:library:1.2.3'
     compile 'com.android.support:multidex:1.0.1'
     compile 'info.wangchen:SimpleHUD:1.0'
     compile project(path: ':EaseUI')
     compile project(path: ':redpacketlibrary')
-    compile files('libs/android-support-multidex.jar')
     compile files('libs/bolts-tasks-1.4.0.jar')
     compile files('libs/umeng-analytics-v5.2.4.jar')
     compile files('libs/parse-android-1.13.0.jar')

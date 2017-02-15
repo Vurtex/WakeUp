@@ -22,4 +22,11 @@
     <string name="user_profile_photo">http://baobaoloveyou.com/flowingdrawer_icon.png</string>
 
     <string name="default_string">我是做什么的</string>
+    <string name="confirm">确定</string>
+    <string name="complete">完成</string>
+    <string name="exit">退出</string>
+    <string name="browser_exitdialog_app_text">确定要退出程序吗？</string>
+    <string name="browser_exitdialog_msg">退出提示</string>
+    <string name="browser_dialog_error">错误提示</string>
+    <string name="browser_init_error">程序不完整</string>
 </resources>

@@ -364,7 +364,6 @@ public class SettingsFragment extends Fragment implements OnClickListener {
 					switch_adaptive_video_encode.closeSwitch();
 					settingsModel.setAdaptiveVideoEncode(false);
 					EMClient.getInstance().callManager().getCallOptions().enableFixedVideoResolution(true);
-
 				}else{
 					switch_adaptive_video_encode.openSwitch();
 					settingsModel.setAdaptiveVideoEncode(true);
@@ -437,7 +436,6 @@ public class SettingsFragment extends Fragment implements OnClickListener {
 						// show login screen
 						((MainActivity) getActivity()).finish();
 						startActivity(new Intent(getActivity(), LoginActivity.class));
-						
 					}
 				});
 			}

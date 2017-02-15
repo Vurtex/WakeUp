@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>WinD</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/box.css" />
+    <script type="text/javascript" src="../script/public.js"></script>
+    <style>
+    	p{
+    		color:#999;
+    		padding:5px;
+    	}
+    </style>
+	<script type="text/javascript">
+	    
+	    apiready = function(){
+	    	fixStatusBar();//沉浸式效果，支持IOS7及Android4.4及以上
+	    	//监听名为"fromNative"的事件，该事件来自Native
+			api.addEventListener({
+				name:'fromNative'
+			}, function(ret){
+				alert('收到来自Native的事件：\n' + JSON.stringify(ret));
+			});
+	    };
+	    
+	    function requestEvent(){
+	    	api.accessNative({
+	    		name: 'requestEvent'
+	    	});
+	    }
+	</script>
+</head>
+<body>
+    <div id="wrap">
+        <div id='header'>
+            <div class="back" tapmode="back-active" onclick="api.closeWin()" >返回</div>
+            <h1>向Html5发送事件</h1>
+            <div class="adpt" ></div>
+        </div>
+        <div id="main">
+           <p>这里是窗口<br>请在[widget/html/wind.html]中实现你的UI及业务逻辑</p>    
+           <br>
+           <br>
+           <br>
+        <div class='itemtitle'>Native向Html5发送事件测试</div>
+        	<lable>点击下面的按钮，请求Native发个名为"fromNative"的事件给Html5</lable><br>
+        	<div class="clickbtn" tapmode="active" onclick="requestEvent()" >请求发送</div>     
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>WinC</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/box.css" />
+    <script type="text/javascript" src="../script/public.js"></script>
+    <style>
+    	p{
+    		color:#999;
+    		padding:5px;
+    	}
+    </style>
+	<script type="text/javascript">
+	    apiready = function(){
+			fixStatusBar();//沉浸式效果，支持IOS7及Android4.4及以上
+			openContent('winc_frm.html', 'winc_frm');//打开主frame
+	    };
+	    
+	    function tooglePage(){
+	    	//frme有历史记录则回跳，没有则关闭window
+	    	api.historyBack({
+    			frameName:"winc_frm"
+	    	}, function(ret){
+	    		if(!ret.status){
+	    			api.closeWin();
+	    		}
+	    	});
+	    }
+	</script>
+</head>
+<body>
+    <div id="wrap">
+        <div id='header'>
+            <div class="back" tapmode="back-active" onclick="tooglePage()" >返回</div>
+            <h1>拦截Url访问</h1>
+            <div class="adpt" ></div>
+        </div>
+        <div id="main"></div>
+    </div>
+</body>
+</html>

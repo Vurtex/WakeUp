@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>SuperWebview DEMO</title>
+    <link rel="stylesheet" type="text/css" href="css/api.css" />
+    <script type="text/javascript" src="./script/public.js"></script>
+	<script type="text/javascript">
+	    apiready = function(){
+			fixStatusBar();//沉浸式效果，支持IOS7及Android4.4及以上
+			openContent('sudoku.html', 'sudoku');//打开主frame
+	        $('year').innerHTML = new Date().getFullYear();
+	        api.addEventListener({
+			    name:'smartupdatefinish'
+			},function(ret,err){
+			    alert('云修复成功: ' + JSON.stringify(ret));
+			});
+	    };
+	</script>
+</head>
+<body>
+    <div id="wrap">
+    	<div id='header'>
+            <div class="back" tapmode="back-active" onclick="api.closeWin()" >返回</div>
+            <h1>SuperWebview DEMO</h1>
+            <div class="adpt" ></div>
+        </div>
+        
+        <div id="main">
+                
+        </div>
+        <div id="footer">
+            <h5>APICloud Copyright &copy;<span id="year"></span> </h5>
+        </div>
+    </div>
+</body>
+</html>

@@ -44,16 +44,16 @@
         "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/exploded-aar/WakeUp/EaseUI/unspecified/res/layout/ease_row_received_message.xml"
     },
     {
-        "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/release/layout/ease_scroll_tab_item.xml",
-        "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/exploded-aar/WakeUp/EaseUI/unspecified/res/layout/ease_scroll_tab_item.xml"
+        "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/release/layout/rp_record_list_footer.xml",
+        "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/res/layout/rp_record_list_footer.xml"
     },
     {
         "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/release/layout/rp_group_member_header.xml",
         "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/res/layout/rp_group_member_header.xml"
     },
     {
-        "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/release/layout/rp_record_list_footer.xml",
-        "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/res/layout/rp_record_list_footer.xml"
+        "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/release/layout/ease_scroll_tab_item.xml",
+        "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/exploded-aar/WakeUp/EaseUI/unspecified/res/layout/ease_scroll_tab_item.xml"
     },
     {
         "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/release/layout/ease_row_sent_file.xml",

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.easemob.redpacketsdk.RedPacket;
-
 import com.vurtex.wakeup.DemoHelper;
 
 /**
@@ -66,6 +65,9 @@ public class MyApplication extends Application {
         RedPacket.getInstance().initContext(applicationContext);
         RedPacket.getInstance().setDebugMode(true);
         //end of red packet code
+//        APICloud.initialize(this);//初始化APICloud，SDK中所有的API均需要初始化后方可调用执行
+        //初始化APICloud网络请求框架，如果不需要则忽略，具体使用方式见MainActivity中的Case
+//        APICloudHttpClient.createInstance(this);
     }
 
     public static MyApplication getInstance() {

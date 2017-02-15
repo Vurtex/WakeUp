@@ -2,10 +2,6 @@ package com.vurtex.wakeup.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -53,7 +49,7 @@ public class ItemActivity extends BaseActivity {
         mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(getBaseContext(),GetDateActivity.class));
+                startActivity(new Intent(getBaseContext(),MainActivity.class));
             }
         });
         mStop.setOnClickListener(new View.OnClickListener() {

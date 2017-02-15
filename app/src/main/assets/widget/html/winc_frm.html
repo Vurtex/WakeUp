@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>WinC</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/box.css" />
+    <script type="text/javascript" src="../script/public.js"></script>
+    <style>
+    	p{
+    		color:#999;
+    		padding:5px;
+    	}
+    </style>
+	<script type="text/javascript">
+	    apiready = function(){
+			fixStatusBar();//沉浸式效果，支持IOS7及Android4.4及以上
+			//TODO
+	    };
+	    
+	    function jumpToBaidu(){
+	    	window.location.href = "http://www.baidu.com";
+	    }
+	    
+	    function jumpToTaobao(){
+	    	window.location.href = "http://www.taobao.com";
+	    }
+	</script>
+</head>
+<body>
+    <div id="wrap">
+        <div id="main">
+           <p>这里是窗口<br>请在[widget/html/winc.html]中实现你的UI及业务逻辑</p>     
+        <div class='itemtitle'>测试拦截Url访问</div>
+        	<lable>点击下面的url，将跳转访问百度或淘宝.其中淘宝将被拦截，不允许访问.同时，访问百度时，界面上将显示加载进度</lable><br>
+        	<div class="clickbtn" tapmode="active" onclick="jumpToBaidu()" >跳转到百度</div>
+        	<div class="clickbtn" tapmode="active" onclick="jumpToTaobao()" >跳转到淘宝</div>     
+        </div>
+    </div>
+</body>
+</html>

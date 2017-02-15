@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>WinB</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/box.css" />
+    <script type="text/javascript" src="../script/public.js"></script>
+    <style>
+    	p{
+    		color:#999;
+    		padding:5px;
+    	}
+    </style>
+	<script type="text/javascript">
+	    apiready = function(){
+			fixStatusBar();//沉浸式效果，支持IOS7及Android4.4及以上
+			//TODO
+	    };
+	    
+	    function accessNative(){
+	    	var ext = $('extra').value;
+	    	if(!ext){
+	    		ext = "";
+	    	}
+	    	api.accessNative({
+	    		name: 'abc',
+	    		extra: ext
+	    	}, function(ret){
+	    		alert('Native中处理了访问操作，返回结果为：' + JSON.stringify(ret));
+	    	});
+	    }
+	</script>
+</head>
+<body>
+    <div id="wrap">
+        <div id='header'>
+            <div class="back" tapmode="back-active" onclick="api.closeWin()" >返回</div>
+            <h1>Html5访问Native</h1>
+            <div class="adpt" ></div>
+        </div>
+        <div id="main">
+           <p>这里是窗口<br>请在[widget/html/winb.html]中实现你的UI及业务逻辑</p>   
+        <br>
+           <br>
+           <br>
+        <div class='itemtitle'>测试Html5访问Native</div>
+        	<lable>设置发送给Native的数据</lable><br>
+        	<input type="text" id="extra" placeholder="请输入任意数据"/>
+        	<div class="clickbtn" tapmode="active" onclick="accessNative()" >访问Native</div>     
+        </div>
+    </div>
+</body>
+</html>

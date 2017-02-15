@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>WinE</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <script type="text/javascript" src="../script/public.js"></script>
+    <style>
+    	p{
+    		color:#999;
+    		padding:5px;
+    	}
+    	
+    	.iconbg {
+			background: url(../image/163.png) no-repeat center;
+		  	background-size:80px 80px;
+		}
+    </style>
+	<script type="text/javascript">
+	    apiready = function(){
+			fixStatusBar();//沉浸式效果，支持IOS7及Android4.4及以上
+			//TODO
+	    };
+	</script>
+</head>
+<body class='iconbg'>
+    <div id="wrap">
+        <div id='header'>
+            <div class="back" tapmode="back-active" onclick="api.closeWin()" >返回</div>
+            <h1>欢迎访问网易新闻</h1>
+            <div class="adpt" ></div>
+        </div>
+        <div id="main">
+           <p>这里是窗口<br>请在[widget/html/wine.html]中实现你的UI及业务逻辑</p> 
+        </div>
+    </div>
+</body>
+</html>

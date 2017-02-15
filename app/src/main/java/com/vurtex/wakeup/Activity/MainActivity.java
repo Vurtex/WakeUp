@@ -31,6 +31,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -60,6 +61,7 @@ import com.vurtex.wakeup.db.UserDao;
 import com.vurtex.wakeup.fragment.MenuListFragment;
 import com.vurtex.wakeup.runtimepermissions.PermissionsManager;
 import com.vurtex.wakeup.runtimepermissions.PermissionsResultAction;
+import com.vurtex.wakeup.ui.AddContactActivity;
 import com.vurtex.wakeup.ui.ChatActivity;
 import com.vurtex.wakeup.ui.ContactListFragment;
 import com.vurtex.wakeup.ui.ConversationListFragment;
@@ -325,15 +327,32 @@ public class MainActivity extends BaseActivity {
 
     protected void setupToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_menu_white);
+        toolbar.inflateMenu(R.menu.add_friend);//设置右上角的填充菜单
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
 
+                switch (item.getItemId()){
+                    case R.id.action_addFriend:
+                        startActivity(new Intent(MainActivity.this, AddContactActivity.class));
+//                        NetUtils.hasDataConnection(MainActivity.this);
+                        break;
+                    case R.id.action_settings:
+
+                        break;
+                }
+                return true;
+            }
+        });
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mDrawer.toggleMenu();
             }
         });
+        toolbar.setTitle(R.string.session);
     }
 
     private void setupMenu() {
