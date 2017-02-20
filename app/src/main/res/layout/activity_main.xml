@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:clipToPadding="false"
-    app:edMenuBackground="#dddddd"
+    app:edMenuBackground="#FFF"
     app:edMenuSize="260dp"
     app:edPosition="1">
 

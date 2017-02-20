@@ -72,12 +72,12 @@
         "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/EaseUI/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ease_login_error_icon.png"
     },
     {
-        "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/EaseUI/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_record_animate_14.png",
-        "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/EaseUI/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ease_record_animate_14.png"
-    },
-    {
         "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/EaseUI/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_msg_state_fail_resend.png",
         "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/EaseUI/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ease_msg_state_fail_resend.png"
+    },
+    {
+        "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/EaseUI/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_record_animate_14.png",
+        "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/EaseUI/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ease_record_animate_14.png"
     },
     {
         "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/EaseUI/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_app_panel_video_icon.9.png",
@@ -204,12 +204,12 @@
         "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/EaseUI/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ease_ic_launcher.png"
     },
     {
-        "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/EaseUI/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_chat_face_normal.png",
-        "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/EaseUI/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ease_chat_face_normal.png"
-    },
-    {
         "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/EaseUI/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_record_animate_02.png",
         "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/EaseUI/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ease_record_animate_02.png"
+    },
+    {
+        "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/EaseUI/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_chat_face_normal.png",
+        "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/EaseUI/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ease_chat_face_normal.png"
     },
     {
         "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/EaseUI/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_chatting_setmode_keyboard_btn_pressed.png",

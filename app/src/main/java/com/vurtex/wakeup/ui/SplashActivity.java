@@ -1,7 +1,11 @@
 package com.vurtex.wakeup.ui;
 
 import android.content.Intent;
+import android.graphics.PixelFormat;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -12,6 +16,7 @@ import com.vurtex.wakeup.DemoHelper;
 import com.vurtex.wakeup.R;
 import com.vurtex.wakeup.activity.LoginActivity;
 import com.vurtex.wakeup.activity.MainActivity;
+import com.vurtex.wakeup.view.FillParentVideoView;
 
 /**
  * 开屏页
@@ -19,11 +24,27 @@ import com.vurtex.wakeup.activity.MainActivity;
  */
 public class SplashActivity extends BaseActivity {
 
-	private static final int sleepTime = 2000;
+	private static final int sleepTime = 4000;
 
+	private FillParentVideoView videoview;
 	@Override
 	protected void onCreate(Bundle arg0) {
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		getWindow().setFormat(PixelFormat.TRANSLUCENT);
 		setContentView(R.layout.em_activity_splash);
+		videoview = (FillParentVideoView) findViewById(R.id.videoview);
+		//设置播放加载路径
+		videoview.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.launcher));
+		//播放
+		videoview.start();
+		//循环播放
+		videoview.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+			@Override
+			public void onCompletion(MediaPlayer mediaPlayer) {
+				videoview.start();
+			}
+		});
 		super.onCreate(arg0);
 
 		RelativeLayout rootLayout = (RelativeLayout) findViewById(R.id.splash_root);

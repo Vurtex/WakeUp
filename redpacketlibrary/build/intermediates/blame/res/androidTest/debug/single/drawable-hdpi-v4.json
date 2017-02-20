@@ -64,12 +64,12 @@
         "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/exploded-aar/WakeUp/EaseUI/unspecified/res/drawable-hdpi-v4/ease_conversation_selected.png"
     },
     {
-        "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_record_animate_03.png",
-        "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/exploded-aar/WakeUp/EaseUI/unspecified/res/drawable-hdpi-v4/ease_record_animate_03.png"
-    },
-    {
         "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_chatting_setmode_voice_btn_normal.png",
         "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/exploded-aar/WakeUp/EaseUI/unspecified/res/drawable-hdpi-v4/ease_chatting_setmode_voice_btn_normal.png"
+    },
+    {
+        "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_record_animate_03.png",
+        "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/exploded-aar/WakeUp/EaseUI/unspecified/res/drawable-hdpi-v4/ease_record_animate_03.png"
     },
     {
         "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_chatting_setmode_voice_btn_pressed.png",
@@ -200,12 +200,12 @@
         "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/exploded-aar/WakeUp/EaseUI/unspecified/res/drawable-hdpi-v4/ease_record_animate_06.png"
     },
     {
-        "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_search_clear_pressed.png",
-        "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/exploded-aar/WakeUp/EaseUI/unspecified/res/drawable-hdpi-v4/ease_search_clear_pressed.png"
-    },
-    {
         "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_unread_count_bg.9.png",
         "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/exploded-aar/WakeUp/EaseUI/unspecified/res/drawable-hdpi-v4/ease_unread_count_bg.9.png"
+    },
+    {
+        "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_search_clear_pressed.png",
+        "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/exploded-aar/WakeUp/EaseUI/unspecified/res/drawable-hdpi-v4/ease_search_clear_pressed.png"
     },
     {
         "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_show_head_toast_bg.9.png",
@@ -328,12 +328,12 @@
         "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/exploded-aar/WakeUp/EaseUI/unspecified/res/drawable-hdpi-v4/ee_20.png"
     },
     {
-        "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_default_avatar.png",
-        "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/exploded-aar/WakeUp/EaseUI/unspecified/res/drawable-hdpi-v4/ease_default_avatar.png"
-    },
-    {
         "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_msg_state_fail_resend.png",
         "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/exploded-aar/WakeUp/EaseUI/unspecified/res/drawable-hdpi-v4/ease_msg_state_fail_resend.png"
+    },
+    {
+        "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_default_avatar.png",
+        "source": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/exploded-aar/WakeUp/EaseUI/unspecified/res/drawable-hdpi-v4/ease_default_avatar.png"
     },
     {
         "merged": "/Users/Vurtex/AndroidStudioProjects/WakeUp/redpacketlibrary/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ease_record_animate_14.png",
