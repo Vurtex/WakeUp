@@ -55,7 +55,6 @@ public class LoginActivity extends BaseActivity {
         if (DemoHelper.getInstance().isLoggedIn()) {
             autoLogin = true;
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
-
             return;
         }
         setContentView(R.layout.em_activity_login);
@@ -76,9 +75,7 @@ public class LoginActivity extends BaseActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
-
-            }
+            public void afterTextChanged(Editable s) {}
         });
         if (DemoHelper.getInstance().getCurrentUsernName() != null) {
             usernameEditText.setText(DemoHelper.getInstance().getCurrentUsernName());
