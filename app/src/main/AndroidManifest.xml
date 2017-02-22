@@ -578,10 +578,10 @@
             android:name="com.umeng.update.UpdateDialogActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <!-- 设置环信应用的appkey -->
+        <!-- 设置环信应用的appkey ssy#chat -->
         <meta-data
             android:name="EASEMOB_APPKEY"
-            android:value="ssy#chat" />
+            android:value="vurtex#wakeup" />
         <!-- 声明sdk所需的service -->
         <service
             android:name="com.hyphenate.chat.EMChatService"

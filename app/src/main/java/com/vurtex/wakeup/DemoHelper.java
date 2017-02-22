@@ -250,14 +250,14 @@ public class DemoHelper {
         options.allowChatroomOwnerLeave(getModel().isChatroomOwnerLeaveAllowed());
         options.setDeleteMessagesAsExitGroup(getModel().isDeleteMessagesAsExitGroup());
         options.setAutoAcceptGroupInvitation(getModel().isAutoAcceptGroupInvitation());
-        // 是否启动 DNS 信息配置，如果是私有化部署，这里要设置为 false
-        options.enableDNSConfig(true);
-        // 设置私有化 IM 地址
-        options.setIMServer("im1.ssy.zhongdianzaixian.com");
-        // 设置私有化 IM 端口号
-        options.setImPort(443);
-        // 设置私有化 Rest 地址+端口号
-        options.setRestServer("a1.ssy.zhongdianzaixian.com:8006");
+//        // 是否启动 DNS 信息配置，如果是私有化部署，这里要设置为 false
+//        options.enableDNSConfig(true);
+//        // 设置私有化 IM 地址
+//        options.setIMServer("im1.ssy.zhongdianzaixian.com");
+//        // 设置私有化 IM 端口号
+//        options.setImPort(443);
+//        // 设置私有化 Rest 地址+端口号
+//        options.setRestServer("a1.ssy.zhongdianzaixian.com:8006");
         // 设置Appkey，如果配置文件已经配置，这里可以不用设置
         // options.setAppKey("qingtuanshe#qts");
         return options;
