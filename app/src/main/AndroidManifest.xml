@@ -88,7 +88,7 @@
         <!-- 开屏页 -->
         <activity
             android:name=".ui.SplashActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="landscape"
             android:theme="@style/horizontal_slide">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

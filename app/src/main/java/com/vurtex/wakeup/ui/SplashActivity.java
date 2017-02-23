@@ -7,7 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hyphenate.chat.EMClient;
@@ -47,7 +47,7 @@ public class SplashActivity extends BaseActivity {
 		});
 		super.onCreate(arg0);
 
-		RelativeLayout rootLayout = (RelativeLayout) findViewById(R.id.splash_root);
+		LinearLayout rootLayout = (LinearLayout) findViewById(R.id.splash_root);
 		TextView versionText = (TextView) findViewById(R.id.tv_version);
 
 		versionText.setText(getVersion());
