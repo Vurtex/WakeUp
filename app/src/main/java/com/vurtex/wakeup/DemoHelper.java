@@ -150,7 +150,6 @@ public class DemoHelper {
 	    //use default options if options is null
 		if (EaseUI.getInstance().init(context, options)) {
 		    appContext = context;
-		    
 		    //debug mode, you'd better set it to false, if you want release your App officially.
 		    EMClient.getInstance().setDebugMode(true);
 		    //get easeui instance
