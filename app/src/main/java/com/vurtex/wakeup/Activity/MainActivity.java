@@ -108,6 +108,7 @@ public class MainActivity extends BaseActivity {
             }
         }
 
+        
         //make sure activity will not in background if user is logged into another device or removed
         if (savedInstanceState != null && savedInstanceState.getBoolean(Constant.ACCOUNT_REMOVED, false)) {
             DemoHelper.getInstance().logout(false, null);
