@@ -37,3 +37,7 @@
 *.class
 
 *.so
+
+*.java
+
+*.ap_

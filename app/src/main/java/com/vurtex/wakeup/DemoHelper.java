@@ -131,6 +131,7 @@ public class DemoHelper {
 	private DemoHelper() {
 	}
 
+
 	public synchronized static DemoHelper getInstance() {
 		if (instance == null) {
 			instance = new DemoHelper();

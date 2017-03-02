@@ -280,13 +280,7 @@ public class MenuListFragment extends EaseBaseFragment {
 
         @Override
         public void onSyncComplete(boolean success) {
-            getActivity().runOnUiThread(new Runnable(){
-
-                @Override
-                public void run() {
                     refresh();
-                }
-            });
         }
 
     }

@@ -19,6 +19,7 @@ public class LauncherActivity extends BaseActivity {
     private static final int SPLASH_DISPLAY_LENGTH = 3000;
     private FillParentVideoView videoview;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
