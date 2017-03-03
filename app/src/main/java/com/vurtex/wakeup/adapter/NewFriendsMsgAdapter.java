@@ -64,6 +64,7 @@ public class NewFriendsMsgAdapter extends ArrayAdapter<InviteMessage> {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
+
 		
 		String str1 = context.getResources().getString(R.string.Has_agreed_to_your_friend_request);
 		String str2 = context.getResources().getString(R.string.agree);
@@ -89,7 +90,6 @@ public class NewFriendsMsgAdapter extends ArrayAdapter<InviteMessage> {
 			} else{
 				holder.groupContainer.setVisibility(View.GONE);
 			}
-			
 			holder.reason.setText(msg.getReason());
 			holder.name.setText(msg.getFrom());
 			// holder.time.setText(DateUtils.getTimestampString(new
@@ -122,7 +122,6 @@ public class NewFriendsMsgAdapter extends ArrayAdapter<InviteMessage> {
                         holder.reason.setText(str8 + msg.getGroupName());
                     }
 				}
-				
 				// set click listener
                 holder.agree.setOnClickListener(new OnClickListener() {
                     @Override
@@ -158,7 +157,6 @@ public class NewFriendsMsgAdapter extends ArrayAdapter<InviteMessage> {
                 holder.status.setEnabled(false);
             }
 		}
-
 		return convertView;
 	}
 
