@@ -36,6 +36,7 @@ import java.util.Map;
  * MenuListFragment
  */
 
+
 public class MenuListFragment extends EaseBaseFragment {
     private static final String TAG = MenuListFragment.class.getSimpleName();
     private ContactSyncListener contactSyncListener;
