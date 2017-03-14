@@ -3,11 +3,14 @@ package com.vurtex.wakeup.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -19,6 +22,7 @@ import com.hyphenate.easeui.ui.EaseBaseFragment;
 import com.hyphenate.easeui.utils.EaseCommonUtils;
 import com.hyphenate.easeui.widget.EaseContactList;
 import com.hyphenate.util.EMLog;
+import com.squareup.picasso.Picasso;
 import com.vurtex.wakeup.DemoHelper;
 import com.vurtex.wakeup.R;
 import com.vurtex.wakeup.ui.ChatActivity;
@@ -42,21 +46,21 @@ public class MenuListFragment extends EaseBaseFragment {
     private ContactSyncListener contactSyncListener;
     private BlackListSyncListener blackListSyncListener;
     private ContactInfoSyncListener contactInfoSyncListener;
-
+    private ImageView ivMenuUserProfilePhoto;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_menu, container,
                 false);
-//        NavigationView vNavigation = (NavigationView) view.findViewById(R.id.vNavigation);
-//        ivMenuUserProfilePhoto = (ImageView) vNavigation.getHeaderView(0).findViewById(R.id.ivMenuUserProfilePhoto);
-//        vNavigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(MenuItem menuItem) {
-//                Toast.makeText(getActivity(),menuItem.getTitle(),Toast.LENGTH_SHORT).show();
-//                return false;
-//            }
-//        }) ;
-//        setupHeader();
+        NavigationView vNavigation = (NavigationView) view.findViewById(R.id.vNavigation);
+        ivMenuUserProfilePhoto = (ImageView) vNavigation.getHeaderView(0).findViewById(R.id.ivMenuUserProfilePhoto);
+        vNavigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                Toast.makeText(getActivity(),menuItem.getTitle(),Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }) ;
+        setupHeader();
         return  view ;
     }
     @Override
@@ -240,10 +244,8 @@ public class MenuListFragment extends EaseBaseFragment {
                     }
                     return lhs.getInitialLetter().compareTo(rhs.getInitialLetter());
                 }
-
             }
         });
-
     }
     /**
      * set contact list item click listener
@@ -303,16 +305,16 @@ public class MenuListFragment extends EaseBaseFragment {
         }
 
     }
-//    private void setupHeader() {
-//        int avatarSize = getResources().getDimensionPixelSize(R.dimen.global_menu_avatar_size);
-//        String profilePhoto = getResources().getString(R.string.user_profile_photo);
-//        Picasso.with(getActivity())
-//                .load(profilePhoto)
-//                .placeholder(R.drawable.img_circle_placeholder)
-//                .resize(avatarSize, avatarSize)
-//                .centerCrop()
-//                .transform(new CircleTransformation())
-//                .into(ivMenuUserProfilePhoto);
-//    }
+    private void setupHeader() {
+        int avatarSize = getResources().getDimensionPixelSize(R.dimen.global_menu_avatar_size);
+        String profilePhoto = getResources().getString(R.string.user_profile_photo);
+        Picasso.with(getActivity())
+                .load(profilePhoto)
+                .placeholder(R.drawable.img_circle_placeholder)
+                .resize(avatarSize, avatarSize)
+                .centerCrop()
+                .transform(new CircleTransformation())
+                .into(ivMenuUserProfilePhoto);
+    }
 
 }
